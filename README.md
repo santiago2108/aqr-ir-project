@@ -44,9 +44,6 @@ Note: plots are saved with `ggsave(..., device = grDevices::png)` due to graphic
 - `outputs/` — figures used in the write-up
 - `docs/` — notes and progress log
 
-## Status
-See `docs/progress.md` for milestone updates.
-
 ## Contact
 Santiago Calderón Angarita
 santiagocal09qgmail.com
