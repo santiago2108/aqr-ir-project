@@ -1,27 +1,7 @@
-# Data (kept in Google Drive; not versioned)
+# Raw/large data (not versioned)
 data/
 data-raw/
-*.csv
-*.tsv
-*.xlsx
-*.sav
-*.dta
-*.rds
-*.RData
-*.Rhistory
-
-# Outputs (generated)
-output/
-outputs/
-results/
-figures/
-plots/
-*.png
-*.jpg
-*.jpeg
-*.pdf
-*.html
-*.docx
+data_raw/
 
 # R / RStudio
 .Rproj.user/
@@ -30,7 +10,7 @@ plots/
 .Ruserdata
 *.Rproj
 
-# renv
+# renv (optional)
 renv/library/
 renv/local/
 renv/python/
