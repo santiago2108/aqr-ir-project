@@ -1,21 +1,23 @@
-# Raw/large data (not versioned)
-data/
-data-raw/
+# --- Raw / large data (do not version) ---
 data_raw/
+data-raw/
+data/
+tmp/
+cache/
 
-# R / RStudio
+# --- R / RStudio ---
 .Rproj.user/
 .Rhistory
 .RData
 .Ruserdata
 *.Rproj
 
-# renv (optional)
+# --- renv (optional: keep lockfile, ignore library) ---
 renv/library/
 renv/local/
 renv/python/
 
-# OS / editors
+# --- OS / editors ---
 .DS_Store
 Thumbs.db
 *.swp
