@@ -2,47 +2,51 @@
 
 Course project for “Applied Quantitative Research in International Relations” (15111).
 This repository examines whether the salience of the Colombia–United States trade relationship
-is associated with Colombia’s voting similarity with the United States in the UN General Assembly.
+is associated with non-directional voting similarity with the United States in UN General Assembly roll-call voting.
 
 ## Research question
-How does trade salience in commercial relationships relate to political alignment in the United Nations General Assembly? (Colombia–US dyad) 
+How does trade salience in asymmetric commercial relationships relate to UNGA voting similarity?
+(illustrated with the Colombia–US dyad)
 
-## Unit of analysis
-Dyad–year, focusing on the Colombia–United States relationship observed annually over time.
+## Unit and level of analysis
+- Unit of analysis: dyad–year (Colombia–US), annual observations
+- Level of analysis: dyadic
+- Dependent variable is non-directional voting similarity (not influence/compliance)
 
 ## Data
-### UNGA voting similarity (dependent variable)
-Political alignment is operationalized as non-directional voting similarity between Colombia and the United States in the UN General Assembly.
-Agreement is coded 1 when both cast the same vote (yes/no/abstain), 0 otherwise, and aggregated to dyad–year as the share of identical votes.
+### UNGA voting similarity (Y)
+Agreement is coded 1 when both countries cast the same vote (yes/no/abstain), 0 otherwise,
+and aggregated to dyad–year as the share of identical votes.
 Source: UNGA roll-call voting data via the R `unvotes` package.
 
-### Trade salience (independent variable)
-Trade salience is operationalized as the share of Colombia’s total trade (imports + exports) conducted with the United States in a given year.
-Planned sources: World Bank WITS / UN Comtrade (annual bilateral trade flows).
+### Trade salience (X) — planned
+Trade salience is operationalized as the share of Colombia’s total trade (imports + exports)
+conducted with the United States in a given year.
+Planned sources: World Bank WITS / UN Comtrade.
 
-### Data storage policy
-Raw/large data files are NOT stored in this GitHub repository.
-They are kept in Google Drive and linked locally via `data/`.
+## Reproduce Y workflow
+Run scripts in order from the project root:
+1. `scripts/01_setup.R`
+2. `scripts/02_un_alignment_colombia.R`
+3. `scripts/03_plot_alignment.R`
 
-## Empirical strategy (planned)
-1. Construct dyad–year dataset (UNGA voting similarity + trade salience).
-2. Descriptive time-series plots for both variables.
-3. Explore covariation with scatter plots, correlations, and simple bivariate regressions.
-Interpretation is descriptive/exploratory (no causal claims).
+Expected outputs:
+- `data_clean/colombia_us_vote_similarity.csv`
+- `outputs/colombia_us_vote_similarity_trend.png`
+- `outputs/colombia_us_vote_similarity_nvotes.png`
+
+Note: plots are saved with `ggsave(..., device = grDevices::png)` due to graphics device issues on ChromeOS/Crostini.
 
 ## Repository structure
-- `src/`     – scripts (run in order)
-- `data/`    – Google Drive link (ignored by Git)
-- `docs/`    – notes / write-up material
-- `output/`  – generated tables/figures (ignored by Git)
-
-## Reproducibility
-- R project workflow
-- Recommended: `renv` for package reproducibility
+- `scripts/` — R pipeline scripts
+- `data_raw/` — raw/large data (ignored)
+- `data_clean/` — small, derived datasets used in analysis
+- `outputs/` — figures used in the write-up
+- `docs/` — notes and progress log
 
 ## Status
-- UNGA alignment variable constructed at dyad–year level; descriptive statistics and time-series plot produced.
-- Next steps: obtain/clean annual bilateral trade data; construct trade salience; merge; explore covariation.
+See `docs/progress.md` for milestone updates.
 
 ## Contact
 Santiago Calderón Angarita
+santiagocal09qgmail.com
