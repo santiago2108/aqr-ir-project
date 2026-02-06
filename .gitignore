@@ -29,3 +29,7 @@ Thumbs.db
 *.gdoc
 *.gsheet
 *.gslides
+
+# Sources PDFs (copyright; keep local)
+Sources/**/*.pdf
+Sources/**/*.epub
