@@ -1,49 +1,111 @@
 # Colombia–US Trade Salience and UNGA Voting Similarity
 
-Course project for “Applied Quantitative Research in International Relations” (15111).
+Course project for **Applied Quantitative Research in International Relations** (15111)  
+Ludwig-Maximilians-Universität München — WiSe 2025/26  
+Supervisor: Maria Camila Atehortua Cardona
+
 This repository examines whether the salience of the Colombia–United States trade relationship
-is associated with non-directional voting similarity with the United States in UN General Assembly roll-call voting.
+is associated with non-directional voting similarity in UN General Assembly roll-call voting.
+
+---
 
 ## Research question
+
 How does trade salience in asymmetric commercial relationships relate to UNGA voting similarity?
-(illustrated with the Colombia–US dyad)
+(Illustrated with the Colombia–US dyad, 1991–2019.)
+
+---
 
 ## Unit and level of analysis
-- Unit of analysis: dyad–year (Colombia–US), annual observations
-- Level of analysis: dyadic
-- Dependent variable is non-directional voting similarity (not influence/compliance)
 
-## Data
-### UNGA voting similarity (Y)
-Agreement is coded 1 when both countries cast the same vote (yes/no/abstain), 0 otherwise,
-and aggregated to dyad–year as the share of identical votes.
-Source: UNGA roll-call voting data via the R `unvotes` package.
+- **Unit of analysis:** dyad–year (Colombia–US), annual observations
+- **Level of analysis:** dyadic
+- **Dependent variable (Y):** UNGA voting similarity — share of identical recorded votes per year
+- **Independent variable (X):** trade salience — Colombia–US bilateral trade as a share of Colombia's total merchandise trade
 
-### Trade salience (X) — planned
-Trade salience is operationalized as the share of Colombia’s total trade (imports + exports)
-conducted with the United States in a given year.
-Planned sources: World Bank WITS / UN Comtrade.
+---
 
-## Reproduce Y workflow
-Run scripts in order from the project root:
-1. `scripts/01_setup.R`
-2. `scripts/02_un_alignment_colombia.R`
-3. `scripts/03_plot_alignment.R`
+## Data sources
 
-Expected outputs:
-- `data_clean/colombia_us_vote_similarity.csv`
-- `outputs/colombia_us_vote_similarity_trend.png`
-- `outputs/colombia_us_vote_similarity_nvotes.png`
+### Y — UNGA Voting Similarity
+Voting similarity is measured as the share of roll-call votes in a given year in which both Colombia and the United States cast identical votes (yes or no), conditional on both having a recorded vote. Abstentions are excluded.
 
-Note: plots are saved with `ggsave(..., device = grDevices::png)` due to graphics device issues on ChromeOS/Crostini.
+Source: UNGA roll-call voting data via the R `unvotes` package. Data covers 1946–2019.
+
+### X — Trade Salience
+Trade salience is operationalized as:
+
+```
+trade_salience = (Colombia–US bilateral trade) / (Colombia total trade)
+```
+
+where bilateral trade is the sum of Colombian exports to and imports from the United States.
+
+- **Bilateral trade (numerator):** World Bank WITS portal — 33 annual Excel files downloaded manually, covering 1991–2023.
+- **Total trade (denominator):** World Bank Development Indicators via the R `wbstats` package (indicators TX.VAL.MRCH.CD.WT and TM.VAL.MRCH.CD.WT).
+
+---
+
+## How to reproduce the analysis
+
+Run scripts **in order** from the project root:
+
+```
+Rscript scripts/01_setup.R
+Rscript scripts/02_vote_similarity.R
+Rscript scripts/03_plot_alignment.R
+Rscript scripts/04_trade_salience.R
+Rscript scripts/05_merge_and_analysis.R
+```
+
+### Expected outputs
+
+| Script | Output |
+|--------|--------|
+| `02_vote_similarity.R` | `data_clean/colombia_us_vote_similarity.csv` |
+| `03_plot_alignment.R` | `outputs/colombia_us_vote_similarity_trend.png` |
+| | `outputs/colombia_us_vote_similarity_trend_restricted.png` |
+| | `outputs/colombia_us_vote_similarity_nvotes.png` |
+| | `outputs/colombia_us_vote_similarity_boxplot.png` |
+| `04_trade_salience.R` | `data_clean/colombia_us_trade_salience.csv` |
+| | `outputs/colombia_us_trade_salience_restricted.png` |
+| | `outputs/colombia_us_trade_salience_boxplot.png` |
+| `05_merge_and_analysis.R` | `data_clean/colombia_us_merged.csv` |
+| | `outputs/scatter_trade_alignment.png` |
+| | `outputs/boxplot_trade_alignment.png` |
+
+### Notes
+- Plots are saved using `png()` + `print()` + `dev.off()` rather than `ggsave()` due to a graphics device conflict on ChromeOS/Crostini.
+- The `wbstats` and `map_dfr()` functions used in scripts 04 and 05 are not part of the course curriculum but were introduced out of necessity for data retrieval and combining.
+- If the error `object 'merged' not found` appears in script 05, re-run all scripts in sequence from a clean R session.
+
+---
+
+## Key finding
+
+The Pearson correlation between trade salience and UNGA voting similarity over the 1991–2019 period is **r = −0.042**, indicating no meaningful linear association between the two variables. The result is discussed in the accompanying paper.
+
+---
 
 ## Repository structure
-- `scripts/` — R pipeline scripts
-- `data_raw/` — raw/large data (ignored)
-- `data_clean/` — small, derived datasets used in analysis
-- `outputs/` — figures used in the write-up
-- `docs/` — notes and progress log
+
+```
+├── scripts/
+│   ├── 01_setup.R               # Environment setup and package loading
+│   ├── 02_vote_similarity.R     # Y variable construction via unvotes
+│   ├── 03_plot_alignment.R      # Y variable visualizations
+│   ├── 04_trade_salience.R      # X variable construction
+│   └── 05_merge_and_analysis.R  # Merge, scatter plot, Pearson correlation
+├── data_raw/
+│   └── wits/                    # Raw WITS Excel files (not tracked by Git)
+├── data_clean/                  # Derived CSVs used in analysis
+├── outputs/                     # All figures used in the paper
+└── docs/                        # Notes and progress log
+```
+
+---
 
 ## Contact
-Santiago Calderón Angarita
-santiagocal09qgmail.com
+
+Santiago Calderón Angarita  
+santiago2108 — GitHub: [santiago2108](https://github.com/santiago2108/aqr-ir-project)
