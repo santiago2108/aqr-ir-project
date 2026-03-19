@@ -108,4 +108,4 @@ The Pearson correlation between trade salience and UNGA voting similarity over t
 ## Contact
 
 Santiago Calderón Angarita  
-santiago2108 — GitHub: [santiago2108](https://github.com/santiago2108/aqr-ir-project)
+santiagocal09@gmail.com
