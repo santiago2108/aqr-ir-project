@@ -1,5 +1,5 @@
 ######################################################################
-# Name: Santiago
+# Name: Santiago Calderón Angarita
 # Course: 15111 - Applied Quantitative Research in International Relations
 # Date of submission: 23.03.2026
 ######################################################################
@@ -79,7 +79,7 @@ p_scatter <- ggplot(merged, aes(x = trade_salience, y = vote_similarity)) +
 
 p_scatter
 
-png("outputs/scatter_trade_alignment.png", width = 7, height = 5,
+png("outputs/scatter_trade_alignment.png", width = 9, height = 5,
     units = "in", res = 300)
 print(p_scatter)
 dev.off()
@@ -114,7 +114,7 @@ p_boxplot <- ggplot(merged_long, aes(x = variable, y = value)) +
 
 p_boxplot
 
-png("outputs/boxplot_trade_alignment.png", width = 5, height = 5,
+png("outputs/boxplot_trade_alignment.png", width = 7, height = 5,
     units = "in", res = 300)
 print(p_boxplot)
 dev.off()

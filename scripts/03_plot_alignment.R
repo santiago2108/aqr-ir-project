@@ -1,5 +1,5 @@
 ######################################################################
-# Name: Santiago
+# Name: Santiago Calderón Angarita
 # Course: 15111 - Applied Quantitative Research in International Relations
 # Date of submission: 23.03.2026
 ######################################################################
@@ -170,7 +170,7 @@ p4 <- ggplot(alignment_restricted, aes(x = "", y = vote_similarity)) +
 p4
 
 png("outputs/colombia_us_vote_similarity_boxplot.png",
-    width = 4, height = 5, units = "in", res = 300)
+    width = 6, height = 5, units = "in", res = 300)
 print(p4)
 dev.off()
 

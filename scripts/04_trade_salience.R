@@ -1,5 +1,5 @@
 ######################################################################
-# Name: Santiago
+# Name: Santiago Calderón Angarita
 # Course: 15111 - Applied Quantitative Research in International Relations
 # Date of submission: 23.03.2026
 ######################################################################
@@ -167,7 +167,7 @@ p2 <- ggplot(trade_restricted, aes(x = year, y = trade_salience)) +
 
 p2
 
-png("outputs/colombia_us_trade_salience_restricted.png", width = 7, height = 5, units = "in", res = 300)
+png("outputs/colombia_us_trade_salience_restricted.png", width = 9, height = 5, units = "in", res = 300)
 print(p2)
 dev.off()
 
