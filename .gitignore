@@ -33,3 +33,7 @@ Thumbs.db
 # Sources PDFs (copyright; keep local)
 Sources/**/*.pdf
 Sources/**/*.epub
+
+# --- Illustration and provisional files ---
+Illustration*/
+Provisional*/
