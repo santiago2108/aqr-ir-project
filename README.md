@@ -28,7 +28,7 @@ How does trade salience in asymmetric commercial relationships relate to UNGA vo
 ## Data sources
 
 ### Y — UNGA Voting Similarity
-Voting similarity is measured as the share of roll-call votes in a given year in which both Colombia and the United States cast identical votes (yes or no), conditional on both having a recorded vote. Abstentions are excluded.
+Voting similarity is measured as the share of roll-call votes in a given year in which both Colombia and the United States cast identical votes (yes, no, or abstain), conditional on both having a recorded vote. Cases where both countries abstain are counted as agreement. A vote is excluded only when one country has a recorded position and the other does not.
 
 Source: UNGA roll-call voting data via the R `unvotes` package. Data covers 1946–2019.
 
